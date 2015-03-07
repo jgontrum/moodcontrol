@@ -36,9 +36,11 @@ timeArray = arange(0, float(list(snd.shape)[0]), 1)
 timeArray = timeArray / sampFreq
 timeArray = timeArray * 1000  #scale to milliseconds
 
-cleanedTimeArray = clean(timeArray, 15)
+cleanedTimeArray = s1
 
-print cleanedTimeArray.sum() / 1000000
+print sys.argv[1]
+print cleanedTimeArray.sum() / (float(list(snd.shape)[0]) / sampFreq)
+
 # print numpy.max(cleanedTimeArray)
 # print cleanedTimeArray.min()
 # print cleanedTimeArray.mean()
@@ -47,6 +49,7 @@ print cleanedTimeArray.sum() / 1000000
 # print numpy.median(cleanedTimeArray)
 # print numpy.std(cleanedTimeArray)
 # print numpy.cov(cleanedTimeArray)
+# print cleanedTimeArray.sum()
 
 # plot(timeArray, s1, color='k')
 # ylabel('Amplitude')
