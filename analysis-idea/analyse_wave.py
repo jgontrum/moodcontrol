@@ -4,7 +4,10 @@ from scipy import stats
 import numpy
 import sys
 import re
+
 # See: http://samcarcagno.altervista.org/blog/basic-sound-processing-python/
+
+
 
 def clean(array, threshold):
 	cleanedList = []
@@ -39,16 +42,17 @@ timeArray = timeArray * 1000  #scale to milliseconds
 cleanedTimeArray = clean(timeArray, 15)
 
 print cleanedTimeArray.sum() / 1000000
-# print numpy.max(cleanedTimeArray)
-# print cleanedTimeArray.min()
-# print cleanedTimeArray.mean()
+
+print numpy.max(cleanedTimeArray)
+#print cleanedTimeArray.min()
+print cleanedTimeArray.mean()
 # print cleanedTimeArray.ptp()
 # print numpy.var(cleanedTimeArray)
 # print numpy.median(cleanedTimeArray)
 # print numpy.std(cleanedTimeArray)
 # print numpy.cov(cleanedTimeArray)
 
-# plot(timeArray, s1, color='k')
-# ylabel('Amplitude')
-# xlabel('Time (ms)')
-#show()
+plot(timeArray, s1, color='k')
+ylabel('Amplitude')
+xlabel('Time (ms)')
+show()
