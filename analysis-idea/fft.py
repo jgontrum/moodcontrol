@@ -5,14 +5,13 @@ from scipy.io import wavfile
 # See: http://samcarcagno.altervista.org/blog/basic-sound-processing-python/
 
 # Read in
-sampFreq, snd = wavfile.read('440_sine.wav')
+sampFreq, snd = wavfile.read('alineaggro1.WAV')
 
 # 16bit Audio:
 snd = snd / (2.**15)
 
 # Channel 1 only
-s1 = snd[:,0] 
-
+s1 = snd[:,0]
 #### Plotting the tone
 timeArray = arange(0, 5060.0, 1)
 timeArray = timeArray / sampFreq
