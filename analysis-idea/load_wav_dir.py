@@ -1,5 +1,6 @@
 #!/usr/bin/python
 import os
+import sys
 from scipy.io import wavfile
 
 #Load *.WAV-file(s)
@@ -18,3 +19,6 @@ def load(name):
     print 'error:\n\''+name+'\' is no file or directory'
   print len(daten),'wav-file(s) sucessfully loaded!'
   return daten
+
+
+print load(sys.argv[1])
