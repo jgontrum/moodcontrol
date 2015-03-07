@@ -1,11 +1,9 @@
-#!/usr/bin/python
 from pylab import*
 from scipy.io import wavfile
 from scipy import stats
 import numpy
 import sys
 import re
-import os
 # See: http://samcarcagno.altervista.org/blog/basic-sound-processing-python/
 
 def clean(array, threshold):
@@ -20,9 +18,6 @@ if len(sys.argv) != 2:
 	sys.exit(1)
 
 # Read in
-<<<<<<< HEAD
-sampFreq, snd = wavfile.read('alineaggro1.WAV')
-=======
 try:
 	sampFreq, snd = wavfile.read(sys.argv[1])
 except Exception, e:
@@ -30,13 +25,12 @@ except Exception, e:
 	sys.exit(1)
 
 bits = int(re.findall(r'\d+',str(snd.dtype))[0]) - 1
->>>>>>> c5e65363a82c4626761be8b84d709f7f8a3f461a
-
 # 16bit Audio:
 snd = snd / (2.**bits)
 
 # Channel 1 only
-s1 = snd[:,0]
+s1 = snd[:,0] 
+
 #### Plotting the tone
 timeArray = arange(0, float(list(snd.shape)[0]), 1)
 timeArray = timeArray / sampFreq
@@ -44,7 +38,7 @@ timeArray = timeArray * 1000  #scale to milliseconds
 
 cleanedTimeArray = clean(timeArray, 40)
 
-print "Max: ", cleanedTimeArray.max()
+print "Max: ", numpy.max(cleanedTimeArray)
 print "Min: ", cleanedTimeArray.min()
 print "Mean: ", cleanedTimeArray.mean()
 print "PeakToPeak: ", cleanedTimeArray.ptp()
@@ -52,7 +46,6 @@ print "Variance: ", numpy.var(cleanedTimeArray)
 print "Median: ", numpy.median(cleanedTimeArray)
 print "Std Abweicheung: ", numpy.std(cleanedTimeArray)
 print "Cov: ", numpy.cov(cleanedTimeArray)
-print "--"
 
 plot(timeArray, s1, color='k')
 ylabel('Amplitude')
@@ -78,20 +71,17 @@ else:
     p[1:len(p) -1] = p[1:len(p) - 1] * 2 # we've got even number of points fft
 
 freqArray = arange(0, nUniquePts, 1.0) * (sampFreq / n);
+
 plot(freqArray/1000, 10*log10(p), color='k')
 
 cleanedfreqArray = freqArray
 
-print "Max: ", cleanedfreqArray.max()
-print "Min: ", cleanedfreqArray.min()
-print "Mean: ", cleanedfreqArray.mean()
-print "PeakToPeak: ", cleanedfreqArray.ptp()
-print "Variance: ", numpy.var(cleanedfreqArray)
-print "Median: ", numpy.median(cleanedfreqArray)
-print "Std Abweicheung: ", numpy.std(cleanedfreqArray)
-print "Cov: ", numpy.cov(cleanedfreqArray)
-print "--"
-
-xlabel('Frequency (kHz)')
-ylabel('Power (dB)')
-#show()
+# print "Max: ", cleanedfreqArray.max()
+# print "Min: ", cleanedfreqArray.min()
+# print "Mean: ", cleanedfreqArray.mean()
+# print "PeakToPeak: ", cleanedfreqArray.ptp()
+# print "Variance: ", numpy.var(cleanedfreqArray)
+# print "Median: ", numpy.median(cleanedfreqArray)
+# print "Std Abweicheung: ", numpy.std(cleanedfreqArray)
+# print "Cov: ", numpy.cov(cleanedfreqArray)
+# print "--"
