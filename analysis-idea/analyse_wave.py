@@ -25,7 +25,6 @@ except Exception, e:
 	sys.exit(1)
 
 bits = int(re.findall(r'\d+',str(snd.dtype))[0]) - 1
-
 # 16bit Audio:
 snd = snd / (2.**bits)
 
@@ -39,7 +38,7 @@ timeArray = timeArray * 1000  #scale to milliseconds
 
 cleanedTimeArray = clean(timeArray, 40)
 
-print "Max: ", cleanedTimeArray.max()
+print "Max: ", numpy.max(cleanedTimeArray)
 print "Min: ", cleanedTimeArray.min()
 print "Mean: ", cleanedTimeArray.mean()
 print "PeakToPeak: ", cleanedTimeArray.ptp()
@@ -47,7 +46,6 @@ print "Variance: ", numpy.var(cleanedTimeArray)
 print "Median: ", numpy.median(cleanedTimeArray)
 print "Std Abweicheung: ", numpy.std(cleanedTimeArray)
 print "Cov: ", numpy.cov(cleanedTimeArray)
-print "--"
 
 plot(timeArray, s1, color='k')
 ylabel('Amplitude')
@@ -73,20 +71,17 @@ else:
     p[1:len(p) -1] = p[1:len(p) - 1] * 2 # we've got even number of points fft
 
 freqArray = arange(0, nUniquePts, 1.0) * (sampFreq / n);
+
 plot(freqArray/1000, 10*log10(p), color='k')
 
 cleanedfreqArray = freqArray
 
-print "Max: ", cleanedfreqArray.max()
-print "Min: ", cleanedfreqArray.min()
-print "Mean: ", cleanedfreqArray.mean()
-print "PeakToPeak: ", cleanedfreqArray.ptp()
-print "Variance: ", numpy.var(cleanedfreqArray)
-print "Median: ", numpy.median(cleanedfreqArray)
-print "Std Abweicheung: ", numpy.std(cleanedfreqArray)
-print "Cov: ", numpy.cov(cleanedfreqArray)
-print "--"
-
-xlabel('Frequency (kHz)')
-ylabel('Power (dB)')
-#show()
+# print "Max: ", cleanedfreqArray.max()
+# print "Min: ", cleanedfreqArray.min()
+# print "Mean: ", cleanedfreqArray.mean()
+# print "PeakToPeak: ", cleanedfreqArray.ptp()
+# print "Variance: ", numpy.var(cleanedfreqArray)
+# print "Median: ", numpy.median(cleanedfreqArray)
+# print "Std Abweicheung: ", numpy.std(cleanedfreqArray)
+# print "Cov: ", numpy.cov(cleanedfreqArray)
+# print "--"
