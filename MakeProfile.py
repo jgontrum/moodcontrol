@@ -21,7 +21,7 @@ def profil(name):
         elif score < 30 and score > 0:
             return "normal"
         elif score < 0.0 and score > -2.0:
-            return "tired
+            return "tired"
         else:
             return "Whaaaattt"
 
