@@ -1,4 +1,5 @@
 ﻿import AufnahmeundVerarbeitung
+
 # Analysiere eine gerade aufgenommene Datei
 # also berechne den Integral etc. (mit AufnahmeundVerarbeitung.py)
 # und vergleiche es mit dem Profil
